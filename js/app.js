@@ -16,9 +16,11 @@ const displayCategory = (category) => {
     const divCategory = document.createElement("div");
     divCategory.classList.add("col");
     divCategory.innerHTML = `
-    <ul class="d-flex justify-content-around fs-5">
+    <div class="col-sm-12 col-lg-12">
+    <ul class="d-flex justify-content-around fs-5 w-75">
         <li id="all-category" class="list-group-item border-0">${element.category_name}</li>      
-    </ul>          
+    </ul> 
+    </div>         
       `;
     container.appendChild(divCategory);
   });
@@ -42,27 +44,31 @@ const displayNews = (news) => {
   news.forEach((element) => {
     const newsDiv = document.createElement("div");
     newsDiv.innerHTML = `
-    <div  class="card mb-3 bg-black text-white">
-   <img  src="${element.image_url}" class="card-img-top" alt="image">
+    <div class="col col-lg-12">
+    <div  class="card mx-auto mb-5  bg-black text-white" style="width: 40rem;">
+   <img  src="${element.image_url}" class="card-img-top" alt="image" style="height: 300px;">
   <div class="card-body">
     <h5 class="card-title">${element.title}</h5>
-    <p class="card-text">${element.details}</p>
+    <p class="card-text">${element.details.slice(0, 200)}</p>
   </div>
   <div class="row col d-flex justify-content-center align-items-center p-4">
             <div class="col">
                 <img style="width:80px" class="rounded-circle p-3"
                 src="${element.thumbnail_url}" alt="">
-                <span class="fs-5" >${element.author.name}</span>
-                 
+                <span class="fs-6 p-2" >${element.author.name}</span>                
             </div>                
                 <div class="col p-4 m-3">
                 <i class="fa-regular fa-eye fa-2x me-3 "></i>
                 <span class="fs-3">${element.total_view}K</span>
                 </div>
-                <div class="col btn btn-success  m-3">
-                <span>See More</span>
-        </div>
+               
+            <div>
+                <button class="col btn btn-sm btn-success p-2 m-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                See Detail
+        </button>
+            </div>
     </div>
+ </div>
  </div>
       
       `;
