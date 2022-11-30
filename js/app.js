@@ -67,7 +67,6 @@ const displayDetail = (detail) => {
   console.log(detail);
 
 }
-
 const displayNews = (news) => {
   const newsContainer = document.getElementById("news");
   news.forEach((element) => {

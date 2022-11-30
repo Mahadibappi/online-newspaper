@@ -1,11 +1,54 @@
 <div class="text-lg">
   <div>
-    <h5>Q.01 what is javascript</h5>
+    <h5>Q.01 what is difference between ver let and const</h5>
     <p>
-      Answer: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse
-      obcaecati consectetur fugiat perferendis, fuga earum autem tempore quae
-      nemo quaerat necessitatibus, dignissimos ullam ex natus veritatis
-      similique saepe distinctio quo.
+      Answer: let: The let keyword declares a block-scoped local variable,
+      optionally initializing it to a value. Block-scoped means that the
+      variable is only available within the block it was declared in, which is
+      usually denoted by curly braces {}. <br />
+      var: The var keyword declares a function-scoped or global variable,
+      optionally initializing it to a value. Function-scoped means that the
+      variable is only available within the function it was declared in. Global
+      variables are available throughout your entire code. <br />
+      const: The const keyword declares a block-scoped, immutable constant
+      variable, i.e. a variable that can’t be reassigned. Constants are also
+      called “immutable variables”, but that’s a bit of a misnomer since they
+      are actually variables – just ones that can’t be reassigned.
+    </p>
+  </div>
+
+  <div>
+    <h5>Q.02 what is difference between arrow and regular function</h5>
+    <p>
+      Answer: Inside of a regular JavaScript function, this value (aka the
+      execution context) is dynamic.The dynamic context means that the value of
+      this depends on how the function is invoked. In JavaScript, there are 4
+      ways you can invoke a regular function.The behavior of this inside of an
+      arrow function differs considerably from the regular function's this
+      behavior. The arrow function doesn't define its own execution context.As
+      seen in the previous section, the regular function can easily construct
+      objects.A consequence of this resolved lexically is that an arrow function
+      cannot be used as a constructor.Inside the body of a regular function,
+      arguments is a special array-like object containing the list of arguments
+      with which the function has been invoked.On the other side, no arguments
+      special keyword is defined inside an arrow function.
+    </p>
+  </div>
+  <div>
+    <h5>Q.03 what is difference between map and filter and filter</h5>
+    <p>
+      Answer:They both return a new array. map returns a new array of elements
+      where you have applied some function on the element so that it changes the
+      original element (typically). filter returns a new array of the elements
+      of the original array (with no change to the original values). filter will
+      only return elements where the function you specify returns a value of
+      true for each element passed to the function.So map returns the same
+      number of elements as the original, but the element value will be
+      transformed in some way and filter will return the same or less number of
+      elements than the original but not change the original elements’
+      values.filter() returns an array containing the element that satisfies the
+      condition, but find() returns the element itself that satisfies the
+      condition
     </p>
   </div>
 </div>
