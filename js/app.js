@@ -39,6 +39,35 @@ const loadNews = async () => {
   }
 };
 
+// load news detail
+
+const loadDetail = async (id) => {
+  const url = ` https://openapi.programming-hero.com/api/news/${id}`
+  const res = await fetch(url)
+  const data = await res.json()
+  displayDetail(data.data);
+
+
+}
+
+
+const displayDetail = (detail) => {
+  detail.forEach(info => {
+    const image = document.getElementById("image")
+    image.innerHTML = ` <img style="width:90px" class="rounded-circle p-3" src=${info.author.img} alt="">`
+    const title = document.getElementById('exampleModalLabel')
+    title.innerText = `${info.author.name}`
+    const date = document.getElementById("date")
+    date.innerText = ` Published Date: ${info.author.published_date}`
+
+    const desc = document.getElementById("title")
+    desc.innerText = `${info.title}...read more`
+
+  })
+  console.log(detail);
+
+}
+
 const displayNews = (news) => {
   const newsContainer = document.getElementById("news");
   news.forEach((element) => {
@@ -63,7 +92,8 @@ const displayNews = (news) => {
                 </div>
                
             <div>
-                <button class="col btn btn-sm btn-success p-2 m-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                <button onClick="loadDetail('${element._id
+      }')" class="col btn btn-sm btn-success p-2 m-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"  >
                 See Detail
         </button>
             </div>
@@ -76,3 +106,5 @@ const displayNews = (news) => {
   });
 };
 loadNews();
+
+
