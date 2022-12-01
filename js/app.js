@@ -1,4 +1,4 @@
-// category start
+// all category start
 const loadCategory = async () => {
   try {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
@@ -9,16 +9,17 @@ const loadCategory = async () => {
     console.log(err);
   }
 };
-
 const displayCategory = (category) => {
   const container = document.getElementById("category");
+
   category.forEach((element) => {
     const divCategory = document.createElement("div");
     divCategory.classList.add("col");
     divCategory.innerHTML = `
     <div class="col-sm-12 col-lg-12">
     <ul class="d-flex justify-content-around fs-5 w-75">
-        <li id="all-category" class="list-group-item border-0">${element.category_name}</li>      
+        <li onClick="loadByCategory('${element.category_id}')" id="all-category" class="list-group-item border-0">${element.category_name}</li> 
+     
     </ul> 
     </div>         
       `;
@@ -27,17 +28,33 @@ const displayCategory = (category) => {
 };
 loadCategory();
 
-// news srart
-const loadNews = async () => {
-  try {
-    const url = `https://openapi.programming-hero.com/api/news/category/01`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNews(data.data);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// load by category
+
+const loadByCategory = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/${id}`
+  const res = await fetch(url)
+  const data = await res.json()
+  displayLoadByCategory(data.data)
+}
+
+
+const displayLoadByCategory = (category) => {
+  const categoryLength = document.getElementById('length')
+  categoryLength.innerHTML = `${category.length}`
+
+  category.forEach(category => {
+    const title = document.getElementById('title')
+    title.innerText = `${category.title}`
+    console.log(category)
+
+  })
+
+}
+loadByCategory()
+
+
+
+
 
 // load news detail
 
@@ -64,9 +81,21 @@ const displayDetail = (detail) => {
     desc.innerText = `${info.title}...read more`
 
   })
-  console.log(detail);
 
 }
+
+loadDetail()
+// news srart
+const loadNews = async () => {
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/category/01`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNews(data.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 const displayNews = (news) => {
   const newsContainer = document.getElementById("news");
   news.forEach((element) => {
