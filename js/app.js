@@ -11,7 +11,7 @@ const loadCategory = async () => {
 };
 const displayCategory = (category) => {
   const container = document.getElementById("category");
-
+  spinner(true)
   category.forEach((element) => {
     const divCategory = document.createElement("div");
     divCategory.classList.add("col");
@@ -68,7 +68,7 @@ const displayLoadByCategory = (category) => {
     unique.appendChild(special)
 
   })
-
+  spinner(false)
 }
 // loadByCategory()
 
@@ -154,5 +154,18 @@ const displayNews = (news) => {
   });
 };
 loadNews();
+
+
+// spinner
+
+const spinner = (isLoading) => {
+  const loader = document.getElementById("loader")
+  if (isLoading) {
+    loader.classList.remove('d-none')
+  } else {
+    loader.classList.add('d-none')
+  }
+
+}
 
 
