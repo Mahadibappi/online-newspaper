@@ -40,15 +40,24 @@ const loadByCategory = async (id) => {
 
 const displayLoadByCategory = (category) => {
   const unique = document.getElementById('unique')
+  unique.textContent = ""
   const categoryLength = document.getElementById('length')
   categoryLength.innerHTML = `${category.length}`
+
+  const notFound = document.getElementById("notFound")
+  if (category.length === 0) {
+    notFound.classList.remove("d-none")
+  } else {
+    notFound.classList.add("d-none")
+  }
+
 
   category.forEach(category => {
     const special = document.createElement('div')
     special.innerHTML = `
       <div class="col d-flex justify-content-center  align-items-center mb-4">
                 <div class="card bg-black text-white" style="width: 20rem;" >
-                <img src=${category.thumbnail_url} class="card-img-top" alt="..." style="height: 350px;">
+                <img src=${category.thumbnail_url} class="card-img-top p-4" alt="..." style="height: 350px;">
                 <div class="card-body">
                  <h5 class="card-title">${category.title}</h5>
                  <p class="card-text">${category.details.slice(0, 150)}</p>
@@ -56,14 +65,12 @@ const displayLoadByCategory = (category) => {
                 </div>
                 </div> 
                `
-    console.log(category)
     unique.appendChild(special)
-
 
   })
 
 }
-loadByCategory()
+// loadByCategory()
 
 
 
